@@ -12,10 +12,9 @@ output:
 highlight: "default"
 ---
 
-```{r setup}
+```{r setup, warning=F, message=F, echo=F}
 library(tidyverse)
 ```
-
 
 # R Markdown Intro
 
@@ -207,7 +206,7 @@ There are a lot of other options that can be included in the YAML, but I'll leav
 This document already has a lot of the markdown annotations you'll need, but here is a table with some common ones. First, to make a table, you just use dashes ('-') and pipes/vertical lines ('|'), and use those to build a table (pretty intuitive). Now, let's use that to make a table of common R markdown Annotations.
 
 Annotation                  | Code
-------------------------------------------------------------------------------------------------
+----------------------------|-------------------------------------------------------------------
 Headers                     | # (the number of '#' is the). for example, ## is 2nd level header
 Italics                     | wrap in single astericks (`*italics*`)
 Bold                        | wrap in double astericks (`**bold**`)
@@ -231,7 +230,10 @@ $$Italian Coffee = American Coffee^2$$
 
 Or, if we wanted to write out our formula for good coffee, maybe it would be
 
-$$coffee quality = b_0 + b_1*flavor + b_2*country_of_origin + b_3*amount_of_whiskey_in_the_cup$$
+$$coffee quality = b_0 + \\
+                   b_1*flavor + \\
+                   b_2*country_of_origin + \\
+                   b_3*amount_of_whiskey_in_the_cup$$
 
 And then we could refer to the intercept b~0~ or $b_0$. If we had the data, we could test this using the `lm()` function, or if we wanted to print the value we could use inline R code `r round(b0, 2)`. We might include a link to the [wikipedia entry on coffee](https://en.wikipedia.org/wiki/Coffee). Perhaps we want to provide a quote about coffee's entry into Europe:
 
@@ -284,7 +286,7 @@ Code chunk options are various ways that you can change how code chunks operate.
 There are **a ton** of options. All of them are listed [here](https://yihui.name/knitr/options/). i'll just mention a few that I find particularly useful below.
 
 option     | what it does                                                               | arguments
--------------------------------------------------------------------------------------------------------------
+-----------|----------------------------------------------------------------------------|--------------------
 eval       | evaluation - tells R whether or not to evaluate (run) the code in a chunk. | TRUE or FALSE
 echo       | tells R whether or not to print the code in the chunk                      | TRUE or FALSE
 warning    | tells R whether or not to display warning messages                         | TRUE or FALSE
@@ -297,6 +299,9 @@ fig.height | height of figure code chunk is printing                            
 fig.dim    | can provide width and height together with this                            | 2 numbers in inches
 fig.align  | where to align a figure                                                    | left, right, center
 fig.cap    | figure caption                                                             | text
+fig.path   | where to save the figure                                                   | text
+dpi        | pixel resolution                                                           | number in pixels
+colormodel | color space for figures                                                    | text (e.g. 'cmyk')
 
 Again, there are many others, but these are the ones I use most.
 
